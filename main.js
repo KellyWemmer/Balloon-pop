@@ -1,4 +1,4 @@
-let clickCount = 0
+let clickCount = 0 //keep track of number of clicks
 
 function inflate(){
     clickCount ++
