@@ -5,6 +5,12 @@ let inflationRate=20
 let maxSize= 300
 let popCount = 0
 
+function startGame(){
+    setTimeout(() => {
+        console.log("it's been 3 seconds")
+    }, 3000) //button runs for 3 seconds
+}
+
 function inflate(){
     clickCount ++
     let balloonElement = document.getElementById("balloon")//gets div element id 'balloon'
