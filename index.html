@@ -11,14 +11,14 @@
 <body>
     
    <div>
-      <button id="start- button" onclick="startGame()">START GAME</button> <!--Reference startGame function-->
-   </div> 
+      <button id="start-button" onclick="startGame()">START GAME</button> <!--Reference startGame function-->
+   </div>     
     
-    
-    <button id="inflate-button" onclick="inflate()">
+    <button id="inflate-button" onclick="inflate()" disabled="true">
         Inflate
         <span id="click-count"></span>
-    </button> <!--references JS function "inflate" and puts "click-count on button"-->
+    </button> <!--references JS function "inflate" and puts "click-count" on button-->
+    
     <div>
         <span>Balloons Popped</span>
         <span id="pop-count">0</span>
@@ -26,7 +26,6 @@
     </div>
     <div id="balloon" class="balloon"></div> <!--label for div and class for CSS-->
     
-
 <script src="main.js"></script> <!--Javascript references-->
 </body>
 </html>
