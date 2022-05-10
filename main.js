@@ -7,26 +7,32 @@ let width=100
 let inflationRate=20
 let maxSize= 300
 let popCount = 0
+let gameLength = 5000
+let clockId = 0
+let timeRemaining = 0
 
 function startGame(){
 
     startButton.setAttribute('disabled', "true")
     inflateButton.removeAttribute("disabled")
-
-    setTimeout(() => {
-        console.log("it's been 3 seconds")
-
-        inflateButton.setAttribute('disabled', "true")//After 3 seconds, run these lines of code
-        startButton.removeAttribute("disabled")  
-        
-        clickCount = 0
-        height = 120
-        width = 100
-
-        draw()
-
-    }, 3000) //button runs for 3 seconds
+    startClock()
+    setTimeout(stopGame, gameLength)
+}  
+function startClock(){
+    timeRemaining = gameLength
+    drawClock()
+    clockId = setInterval(drawClock, 1000)
+} 
+function stopClock(){
+    clearInterval(clockId)//stops clock from counting
 }
+
+function drawClock(){
+    let countdownElem = document.getElementById("countdown")
+    countdownElem.innerText = (timeRemaining / 1000).toString()
+    timeRemaining -= 1000
+}
+
 
 function inflate(){
     clickCount ++
@@ -52,4 +58,18 @@ function draw(){
     
     clickCountElem.innerText = clickCount.toString()
     popCountElem.innerText = popCount.toString()    
+}
+
+function stopGame(){
+    console.log("The game is over")
+
+    inflateButton.setAttribute('disabled', "true")//After 3 seconds, run these lines of code
+    startButton.removeAttribute("disabled")  
+    
+    clickCount = 0
+    height = 120
+    width = 100
+    stopClock()
+
+    draw()//Calls draw function after resetting clickCount and height/width
 }
