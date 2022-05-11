@@ -6,18 +6,19 @@ let height=120 //set height,width etc to int
 let width=100
 let inflationRate=20
 let maxSize= 300
-let popCount = 0
+let highestPopCount = 0
+let currentPopCount = 0
 let gameLength = 5000
 let clockId = 0
 let timeRemaining = 0
 
 function startGame(){
-
     startButton.setAttribute('disabled', "true")
     inflateButton.removeAttribute("disabled")
     startClock()
     setTimeout(stopGame, gameLength)
 }  
+
 function startClock(){
     timeRemaining = gameLength
     drawClock()
@@ -41,23 +42,26 @@ function inflate(){
     
     if(height >= maxSize){
         console.log("pop the balloon")
-        popCount++
+        currentPopCount++
         height = 0
         width = 0
     } 
     draw()//Once inflate function is updated, it will draw the below items into screen
 }
 
+
 function draw(){
     let balloonElement = document.getElementById("balloon")//gets div element id 'balloon'
     let clickCountElem = document.getElementById("click-count")
     let popCountElem = document.getElementById("pop-count")
+    let highPopCountElem = document.getElementById("high-pop-count")
     
     balloonElement.style.height = height + "px"
     balloonElement.style.width = width +"px"
     
     clickCountElem.innerText = clickCount.toString()
-    popCountElem.innerText = popCount.toString()    
+    popCountElem.innerText = currentPopCount.toString() 
+    highPopCountElem.innerText = highestPopCount.toString()
 }
 
 function stopGame(){
@@ -69,7 +73,12 @@ function stopGame(){
     clickCount = 0
     height = 120
     width = 100
-    stopClock()
 
+    if(currentPopCount > highestPopCount){
+        highestPopCount = currentPopCount
+    }
+    currentPopCount = 0
+
+    stopClock()
     draw()//Calls draw function after resetting clickCount and height/width
 }
