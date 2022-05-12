@@ -1,6 +1,8 @@
 let startButton = document.getElementById("start-button")
 let inflateButton = document.getElementById("inflate-button")
 
+// #region GAME LOGIC AND DATA
+
 let clickCount = 0 //keep track of number of clicks
 let height=120 //set height,width etc to int
 let width=100
@@ -81,4 +83,17 @@ function stopGame(){
 
     stopClock()
     draw()//Calls draw function after resetting clickCount and height/width
+}
+
+
+// #endregion
+
+let players = []
+
+function setPlayer(event){
+    event.preventDefault()
+    let form = event.target
+
+    let playerName = form.playerName.value
+    form.reset()
 }
