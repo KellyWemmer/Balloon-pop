@@ -95,5 +95,14 @@ function setPlayer(event){
     let form = event.target
 
     let playerName = form.playerName.value
+
+    let currentPlayer = players.find(player => player.name == playerName)
+
+    if(!currentPlayer){
+        currentPlayer = {name: playerName, topScore: 0}
+    }
+
+    console.log(currentPlayer)
+
     form.reset()
 }
