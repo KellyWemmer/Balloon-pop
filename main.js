@@ -89,6 +89,7 @@ function stopGame(){
 // #endregion
 
 let players = []
+loadPlayers()
 
 function setPlayer(event){
     event.preventDefault()
@@ -100,9 +101,23 @@ function setPlayer(event){
 
     if(!currentPlayer){
         currentPlayer = {name: playerName, topScore: 0}
+        players.push(currentPlayer)
+        savePlayers()
     }
 
     console.log(currentPlayer)
 
     form.reset()
 }
+
+function savePlayers(){
+    window.localStorage.setItem("players", JSON.stringify(players)) //Fnction needs string parameter-Use stringify instead of tostring to keep data
+}
+
+function loadPlayers(){
+    let playersData = JSON.parse(window.localStorage.getItem("players")) //convert value of key back to object
+    if(playersData){
+        players = playersData
+    }
+}   
+    
