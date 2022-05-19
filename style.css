@@ -1,5 +1,6 @@
 :root{
     --primary:#f393fd;
+    --primary-darken: #af2cbc;
     --bg: rgb(224, 217, 217);
     --shadow: 2px 0 8px rgba(0, 0, 0, .3);
     --corners: 4px;
@@ -22,11 +23,39 @@ img{
    max-width: 100%; 
 }
 
+form{
+    margin: 0;
+}
+
+input{
+   background-color: transparent; 
+   border: none;
+   border-bottom: 1px solid var(--text-color); 
+   outline: none;  
+   font-size: 14pt;
+}
+
+button{
+    background-color: var(--primary);
+    color: var(--light);
+    border: 1px solid var(--primary-darken);
+    border-radius: var(--corners);
+    box-shadow: var(--shadow);
+    text-transform: uppercase;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--primary-darken);
+}
+
 .balloon{
-    height: 120px;
+        height: 120px;
     width: 100px;
     background-color: blue;
     border-radius: 50%;
+    transition: all .2s ease;
 }
 
 .container{
@@ -49,7 +78,7 @@ img{
     display: flex;
 }
 
-.space-between{
+.d-flex.space-between{
     justify-content: space-between;
 }
 
