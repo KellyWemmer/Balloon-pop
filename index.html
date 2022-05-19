@@ -5,12 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balloon Pop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"><!--CSS references-->
 </head>
 
 <body>
 
-    <form onsubmit="setPlayer(event)"><!--refers to function in JS-->
+    <header>
+        <div class="container shadow">
+            <img src="balloon-pop-logo.png" alt="balloon pop logo">
+        </div>
+    </header>
+
+    <main class="container card">   
+
+    <form class= "d-flex" id="player-form" onsubmit="setPlayer(event)"><!--refers to function in JS-->
         <div>
             <label for="name">Player Name:</label>
             <input type="text" name="playerName" required>
@@ -19,6 +30,9 @@
     </form>
 
     <section id = "game" class="game hidden">
+        <div>
+            <button onclick="changePlayer()">Change Player</button>
+        </div>
         <div>
             <button id="start-button" onclick="startGame()">START GAME</button><!--Reference startGame function-->
         </div>
@@ -43,6 +57,7 @@
 
         <div id="balloon" class="balloon"></div><!--label for div and class for CSS-->
     </section>
+</main>
 
     <script src="main.js"></script><!--Javascript references-->
 </body>

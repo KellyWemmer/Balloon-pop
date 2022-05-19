@@ -113,6 +113,11 @@ function setPlayer(event){
     draw()
 }
 
+function changePlayer(){
+    document.getElementById("player-form").classList.remove("hidden")
+    document.getElementById("game").classList.add("hidden")
+}
+
 function savePlayers(){
     window.localStorage.setItem("players", JSON.stringify(players)) //Function needs string parameter-Use stringify instead of tostring to keep data
 }
