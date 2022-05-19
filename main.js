@@ -108,6 +108,8 @@ function setPlayer(event){
     }    
 
     form.reset()
+    document.getElementById("game").classList.remove("hidden")
+    form.classList.add("hidden")
     draw()
 }
 
