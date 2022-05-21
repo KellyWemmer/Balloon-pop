@@ -4,7 +4,8 @@
     --bg: rgb(224, 217, 217);
     --shadow: 2px 0 8px rgba(0, 0, 0, .3);
     --corners: 4px;
-    --text-color: #1a1919;
+    --text-color: #3a3838;
+    --dark: #3a3838;
     --light: #fdfdfd;
 }
 
@@ -72,6 +73,13 @@ button:hover{
 
 .shadow{
     filter: drop-shadow(var(--shadow));
+}
+
+.bg-dark{
+    background-color: var(--dark);
+}
+.text-light{
+    color: var(--light);
 }
 
 .d-flex{
