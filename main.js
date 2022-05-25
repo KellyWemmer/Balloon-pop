@@ -1,6 +1,3 @@
-let startButton = document.getElementById("start-button")
-let inflateButton = document.getElementById("inflate-button")
-
 // #region GAME LOGIC AND DATA
 
 let clickCount = 0 //keep track of number of clicks
@@ -16,8 +13,8 @@ let timeRemaining = 0
 let currentPlayer = {}
 
 function startGame(){
-    startButton.setAttribute('disabled', "true")
-    inflateButton.removeAttribute("disabled")
+    document.getElementById("game-controls").classList.remove("hidden")
+    document.getElementById("main-controls").classList.add("hidden")
     startClock()
     setTimeout(stopGame, gameLength)
 }  
@@ -73,8 +70,8 @@ function draw(){
 function stopGame(){
     console.log("The game is over")
 
-    inflateButton.setAttribute('disabled', "true")//After 3 seconds, run these lines of code
-    startButton.removeAttribute("disabled")  
+    document.getElementById("main-controls").classList.remove("hidden")
+    document.getElementById("game-controls").classList.add("hidden")
     
     clickCount = 0
     height = 120
