@@ -7,7 +7,7 @@ let inflationRate=20
 let maxSize= 300
 let highestPopCount = 0
 let currentPopCount = 0
-let gameLength = 5000
+let gameLength = 10000
 let clockId = 0
 let timeRemaining = 0
 let currentPlayer = {}
@@ -41,18 +41,24 @@ function inflate(){
     clickCount ++
     height += inflationRate
     width += inflationRate
-    
+    checkBalloonPop()    
+    draw()//Once inflate function is updated, it will draw the below items into screen
+}
+
+function checkBalloonPop(){
     if(height >= maxSize){
         console.log("pop the balloon")
         let balloonElement = document.getElementById("balloon")
         balloonElement.classList.remove(currentColor)
         getRandomColor()
         balloonElement.classList.add(currentColor)
+
+        document.getElementById("pop-sound").play()
+
         currentPopCount++
         height = 0
         width = 0
     } 
-    draw()//Once inflate function is updated, it will draw the below items into screen
 }
 
 function getRandomColor(){
