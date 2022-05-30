@@ -17,6 +17,7 @@ let possibleColors = ["red", "green", "blue", "purple", "pink"]
 function startGame(){
     document.getElementById("game-controls").classList.remove("hidden")
     document.getElementById("main-controls").classList.add("hidden")
+    document.getElementById("scoreboard").classList.add("hidden")
     startClock()
     setTimeout(stopGame, gameLength)
 }  
@@ -90,7 +91,8 @@ function stopGame(){
 
     document.getElementById("main-controls").classList.remove("hidden")
     document.getElementById("game-controls").classList.add("hidden")
-    
+    document.getElementById("scoreboard").classList.remove("hidden")
+
     clickCount = 0
     height = 120
     width = 100
@@ -103,6 +105,7 @@ function stopGame(){
 
     stopClock()
     draw()//Calls draw function after resetting clickCount and height/width
+    drawScoreboard()
 }
 
 
@@ -129,6 +132,7 @@ function setPlayer(event){
     document.getElementById("game").classList.remove("hidden")
     form.classList.add("hidden")
     draw()
+    drawScoreboard()
 }
 
 function changePlayer(){
@@ -146,4 +150,24 @@ function loadPlayers(){
         players = playersData
     }
 }   
-    
+ 
+function drawScoreboard(){
+    let template = ""
+
+    players.forEach(player => {
+        template += `
+        <div class="d-flex space-between">
+            <span>
+                <i class="fa fa user"></i>
+                ${player.name}
+            </span>
+            <span>${player.topScore}</span>            
+        </div>
+        `
+    })
+
+    document.getElementById("players").innerHTML = template
+}
+
+drawScoreboard()
+
