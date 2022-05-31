@@ -154,6 +154,8 @@ function loadPlayers(){
 function drawScoreboard(){
     let template = ""
 
+   players.sort((p1, p2) => p2.topScore - p1.topScore) 
+
     players.forEach(player => {
         template += `
         <div class="d-flex space-between">
